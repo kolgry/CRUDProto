@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "143851396043",
+    "project_id": "crudproto",
+    "storage_bucket": "crudproto.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143851396043:android:0e594d77d326cfb76db44e",
+        "android_client_info": {
+          "package_name": "com.example.crudproto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6DnaTHzd3ikcW3SUCdeoq6TdV_l1UoJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
