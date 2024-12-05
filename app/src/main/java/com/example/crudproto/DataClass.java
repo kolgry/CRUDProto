@@ -29,4 +29,8 @@ public class DataClass {
         this.dataLang = dataLang;
         this.dataImage = dataImage;
     }
+
+    public DataClass() {
+
+    }
 }
