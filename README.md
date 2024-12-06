@@ -33,3 +33,9 @@ This project is a CRUD (Create, Read, Update, Delete) prototype application for 
 * **DataClass.java**: This class defines the data structure of each entry in the database. (Modify this class to match your specific data format)
 * **MyAdapter.java**: This class is a custom adapter used to display data entries in a RecyclerView. (Modify this class to handle your data view)
 * **UploadActivity.java**: (Not provided) This class likely handles adding new data entries. (Implement this activity based on your needs)
+
+### Screenshots
+
+<img src="Screenshots/17e020ba-b434-48d4-9345-173160490080.jpeg" width = 200 height = 375>
+<img src="Screenshots/89528c64-b277-4623-b958-32e1921d4e4c.jpeg" width = 200 height = 375>
+<img src="Screenshots/c30a693d-769b-4c8a-ab9c-274ff7be849b.jpeg" width = 200 height = 375>
