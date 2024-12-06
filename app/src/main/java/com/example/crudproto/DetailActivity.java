@@ -20,13 +20,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class DetailActivity extends AppCompatActivity {
 
-    TextView detailDesc, detailtitle;
+    TextView detailDesc, detailTitle, detailLang;
     ImageView detailImage;
-    FloatingActionButton deleteButton;
+    FloatingActionButton deleteButton, editButton;
+    StorageReference storageReference;
 
     String key = "";
     String imageUrl = "";
@@ -44,13 +46,16 @@ public class DetailActivity extends AppCompatActivity {
 
         detailDesc = findViewById(R.id.detailDesc);
         detailImage = findViewById(R.id.detailImage);
-        detailtitle = findViewById(R.id.detailTitle);
+        detailTitle = findViewById(R.id.detailTitle);
         deleteButton = findViewById(R.id.deleteButton);
+        editButton = findViewById(R.id.editButton);
+        detailLang = findViewById(R.id.detailLang);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             detailDesc.setText(bundle.getString("Description"));
-            detailtitle.setText(bundle.getString("title"));
+            detailTitle.setText(bundle.getString("title"));
+            detailLang.setText(bundle.getString("Language"));
             key = bundle.getString("Key");
             imageUrl = bundle.getString("Image");
             Glide.with(this).load(bundle.getString("iamge")).into(detailImage);
@@ -61,9 +66,7 @@ public class DetailActivity extends AppCompatActivity {
                 final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Android Tutorials");
                 FirebaseDatabase storage = FirebaseDatabase.getInstance();
 
-
-                StorageReference storageReference;
-                storageReference = storage.getReferenceFromUrl(imageUrl);
+                StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(imageUrl);
                 storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
@@ -73,6 +76,18 @@ public class DetailActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+            }
+        });
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailActivity.this, UpdateActivity.class)
+                        .putExtra("Title", detailTitle.getText().toString())
+                        .putExtra("Description", detailDesc.getText().toString())
+                        .putExtra("language", detailLang.getText().toString())
+                        .putExtra("Image", imageUrl)
+                        .putExtra("Key", key);
+                startActivity(intent);
             }
         });
     }
